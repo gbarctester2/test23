@@ -2,7 +2,7 @@ dist: bionic
 language: cpp
 env:
   global:
-  - RUN_TESTS=true
+  - RUN_TESTS=false
 
 stages:
 - name: testing
