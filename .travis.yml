@@ -14,4 +14,7 @@ jobs:
       workspaces:
         use: ws1
       script:
+        - ls -l /home/travis/.casher
+        - cat /home/travis/.casher/fetch.log
+        - cat /home/travis/.casher/fetch.err.log
         - cat foo.txt || true
