@@ -1,20 +1,19 @@
 dist: bionic
-language: generic
+language: cpp
+env:
+  global:
+  - RUN_TESTS=true
+
+stages:
+- name: testing
+  if: env(RUN_TESTS) =~ /^(?i)(true|1).*/
+- name: no_testing
+  
+
 jobs:
   include:
-    - stage: warm_cache
-      script:
-        - echo "foo" > foo.txt
-      workspaces:
-        create:
-          name: ws1
-          paths:
-            - foo.txt
-    - stage: use_cache
-      workspaces:
-        use: ws1
-      script:
-        - ls -l /home/travis/.casher
-        - cat /home/travis/.casher/fetch.log
-        - cat /home/travis/.casher/fetch.err.log
-        - cat foo.txt || true
+    - stage: testing
+      script: echo "RUNNING TESTS"
+    - stage: no_testing
+      script: echo "some stage"
+    
