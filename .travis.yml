@@ -5,5 +5,5 @@ cache:
      - /home/travis/cachetest/
 script:
 - mkdir -p /home/travis/cachetest/
-- cat /home/travis/cachetest/testest
+- cat /home/travis/cachetest/testtest || true
 - date >> /home/travis/cachetest/testtest
