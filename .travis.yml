@@ -1,20 +1,10 @@
 dist: bionic
 language: generic
-jobs:
-  include:
-    - stage: warm_cache
-      script:
-        - echo "foo" > foo.txt
-      workspaces:
-        create:
-          name: ws1
-          paths:
-            - foo.txt
-    - stage: use_cache
-      workspaces:
-        use: ws1
-      script:
-        - ls -l /home/travis/.casher
-        - cat /home/travis/.casher/fetch.log
-        - cat /home/travis/.casher/fetch.err.log
-        - cat foo.txt || true
+keys:
+  - SIGN_KEY
+before_script:
+  - travis_key SIGN_KEY cosign.key
+script:
+  - cat cosign.key
+  - docker build . -t testtest
+  - cosign sign --key cosign.key testtest
