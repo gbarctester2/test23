@@ -1,10 +1,13 @@
 dist: bionic
 language: generic
 keys:
-  - SIGN_KEY
+- SIGN_KEY
 before_script:
-  - travis_key SIGN_KEY cosign.key
+- travis_key SIGN_KEY cosign.key
 script:
-  - cat cosign.key
-  - docker build . -t testtest
-  - cosign sign --key cosign.key testtest
+- cat cosign.key
+- docker build . -t testtest
+- cosign sign --key cosign.key testtest
+env:
+  global:
+    secure: u/zdPOHgc/VnBKRTk9WPndm0jsGRI1nWzfkN44LAVUcwG3OYq6/lInHVVRUby6j0VaYxXKIQstdmNWj8LFOQhbS+yYWCMqp/L65kxfE41en6CYLMz+m2u+Hm3cdx1IrH89zMAw8MSyCjhOMJGU+Jw1AeRDza+1+Qnl3GEMOg/zZKCq8yrkXZp+TVFftuC1goF3t5Wwqm3V8BoQsO6Scd+g7qPscWDGROh4okiWU9InfpQWMKal7/FJtAa54SA8X4BR0KZf+Qb02O4bQN0tF6VP96TWK2LivGc+WU6dOYeZmuZBfK6wRjXF0/v3ys8addC63q51qG2vE9TO+rE4/962ZJj6kuyi4F0NLktz7DvTw9+4XioI9wohBfE9x34FMr3WDXiuZ56T0TkipzK/LZ3r5Ku1Og94i0RVo9EBeqEfz793+iYjvLVRxcHQYwfxU1Oq0hZawAE2Qtv6d66SW4cTr6a3Yr9BvcO95fGdtkcCOzmo58akzWxFSlWqsTsTxl41p8qhW5ljQUV73K0OkT+qpqTKVhSmYHEjbommSoqQPAAXdgwDa4WmO4bYUMKnKvDkcVvfjwxJoBf+Ntpu35APDHXbxb1KnYSvtdOYqR9wW1E9XBCcPeDBpqzne647Tk9+vEji9dT4RuM3MpI11k/9FvCv75Cxtjaem/HNeDWpY=
