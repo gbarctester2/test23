@@ -1,20 +1,9 @@
 dist: bionic
 language: generic
-jobs:
-  include:
-    - stage: warm_cache
-      script:
-        - echo "foo" > foo.txt
-      workspaces:
-        create:
-          name: ws1
-          paths:
-            - foo.txt
-    - stage: use_cache
-      workspaces:
-        use: ws1
-      script:
-        - ls -l /home/travis/.casher
-        - cat /home/travis/.casher/fetch.log
-        - cat /home/travis/.casher/fetch.err.log
-        - cat foo.txt || true
+cache:
+    directories:
+     - /home/travis/cachetest/
+script:
+- mkdir -p /home/travis/cachetest/
+- cat /home/travis/cachetest/testest
+- date >> /home/travis/cachetest/testtest
